@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -8,6 +11,16 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  void startQuiz(int num) {
+    // print(id);
+    final randomNum = Random();
+    final pool = List<Question>.from(allQuestions);
+    pool.shuffle(randomNum);
+    final selected = pool.take(num).toList();
+    // print(selected);
+    // need to add startQuiz logic
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +42,7 @@ class _StartScreenState extends State<StartScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => startQuiz(3),
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: Colors.blueAccent, width: 2),
                       shape: RoundedRectangleBorder(
@@ -63,7 +76,7 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                   SizedBox(width: 10),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => startQuiz(5),
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: Colors.blueAccent, width: 2),
                       shape: RoundedRectangleBorder(
@@ -97,7 +110,7 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                   SizedBox(width: 10),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => startQuiz(10),
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: Colors.blueAccent, width: 2),
                       shape: RoundedRectangleBorder(
