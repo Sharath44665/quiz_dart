@@ -68,41 +68,52 @@ class _QuizScreenState extends State<QuizScreen> {
                     "Explanation: Use a for loop to build a list of Card widgets and place them in the Scaffold body (e.g., in a Column or ListView). Example that creates three similar cards with text \"demo option 1\", \"demo option 2\", \"demo option 3\"",
                   ),
                   const SizedBox(height: 12),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          label: Text("Previous"),
-                          icon: Icon(Icons.arrow_back),
-                        ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              label: Text("Previous"),
+                              icon: Icon(Icons.arrow_back),
+                            ),
+                          ),
+                          SizedBox(width: 10),
 
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          label: Text("Check answer"),
-                          icon: Icon(Icons.lightbulb),
-                        ),
-
-                        ElevatedButton.icon(
-                          onPressed: () {},
-                          label: Text("Next"),
-                          iconAlignment: IconAlignment.end,
-                          icon: Icon(Icons.arrow_forward),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      side: WidgetStateProperty.all(
-                        BorderSide(color: Colors.red),
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              label: Text("Check answer"),
+                              icon: Icon(Icons.lightbulb),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              label: Text("Next"),
+                              iconAlignment: IconAlignment.end,
+                              icon: Icon(Icons.arrow_forward),
+                            ),
+                          ),
+                        ],
                       ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Center(
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        side: WidgetStateProperty.all(
+                          BorderSide(color: Colors.red),
+                        ),
+                      ),
+                      label: Text("finish"),
+                      icon: Icon(Icons.stop_circle, color: Colors.red),
                     ),
-                    label: Text("finish"),
-                    icon: Icon(Icons.stop_circle, color: Colors.red),
                   ),
                 ],
               ),
