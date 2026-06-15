@@ -14,7 +14,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     super.initState();
     total = 3;
-    print(total);
+    // print(total);
   }
 
   @override
@@ -115,6 +115,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       icon: Icon(Icons.stop_circle, color: Colors.red),
                     ),
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
