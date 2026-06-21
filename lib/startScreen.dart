@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:quiz_app/question.dart';
+import 'package:quiz_app/quizScreen.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -17,8 +18,11 @@ class _StartScreenState extends State<StartScreen> {
     final pool = List<Question>.from(allQuestions);
     pool.shuffle(randomNum);
     final selected = pool.take(num).toList();
-    // print(selected);
-    // need to add startQuiz logic
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => QuizScreen(questions: selected)),
+    );
   }
 
   @override
