@@ -21,105 +21,113 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Question ${currentIdx + 1} of $total")),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Text("demo question", style: TextStyle(fontSize: 20)),
-            const SizedBox(height: 16),
-            Card(
-              color: Colors.blue.shade100,
-              child: ListTile(
-                leading: Icon(Icons.check_circle),
-                title: Text("demo option 1"),
-                onTap: () {},
-              ),
-            ),
-            for (var idx = 0; idx < total; idx += 1)
-              Card(
-                color: const Color.fromARGB(255, 252, 254, 255),
-                child: ListTile(
-                  leading: Icon(Icons.radio_button_off),
-                  title: Text("demo option $idx"),
-                  onTap: () {},
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(13),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height - kToolbarHeight - 40,
+          ),
+          child: IntrinsicHeight(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("demo question", style: TextStyle(fontSize: 20)),
+                const SizedBox(height: 16),
+                Card(
+                  color: Colors.blue.shade100,
+                  child: ListTile(
+                    leading: Icon(Icons.check_circle),
+                    title: Text("demo option 1"),
+                    onTap: () {},
+                  ),
                 ),
-              ),
-            const Spacer(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.grey.shade300),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "incorrect!",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
+                for (var idx = 0; idx < total; idx += 1)
+                  Card(
+                    color: const Color.fromARGB(255, 252, 254, 255),
+                    child: ListTile(
+                      leading: Icon(Icons.radio_button_off),
+                      title: Text("demo option $idx"),
+                      onTap: () {},
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Explanation: Use a for loop to build a list of Card widgets and place them in the Scaffold body (e.g., in a Column or ListView). Example that creates three similar cards with text \"demo option 1\", \"demo option 2\", \"demo option 3\"",
-                  ),
-                  const SizedBox(height: 12),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () {},
-                              label: Text("Previous"),
-                              icon: Icon(Icons.arrow_back),
-                            ),
-                          ),
-                          SizedBox(width: 10),
 
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () {},
-                              label: Text("Check answer"),
-                              icon: Icon(Icons.lightbulb),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () {},
-                              label: Text("Next"),
-                              iconAlignment: IconAlignment.end,
-                              icon: Icon(Icons.arrow_forward),
-                            ),
+                const Spacer(),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.grey.shade300),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "incorrect!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "Explanation: Use a for loop to build a list of Card widgets and place them in the Scaffold body (e.g., in a Column or ListView). Example that creates three similar cards with text \"demo option 1\", \"demo option 2\", \"demo option 3\"",
+                      ),
+                      const SizedBox(height: 12),
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  label: Text("Previous"),
+                                  icon: Icon(Icons.arrow_back),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  label: Text("Check answer"),
+                                  icon: Icon(Icons.lightbulb),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  label: Text("Next"),
+                                  iconAlignment: IconAlignment.end,
+                                  icon: Icon(Icons.arrow_forward),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  Center(
-                    child: ElevatedButton.icon(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        side: WidgetStateProperty.all(
-                          BorderSide(color: Colors.red),
-                        ),
+                ),
+                SizedBox(height: 10),
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      side: WidgetStateProperty.all(
+                        BorderSide(color: Colors.red),
                       ),
-                      label: Text("finish"),
-                      icon: Icon(Icons.stop_circle, color: Colors.red),
                     ),
+                    label: Text("finish"),
+                    icon: Icon(Icons.stop_circle, color: Colors.red),
                   ),
-                  SizedBox(height: 20),
-                ],
-              ),
+                ),
+                SizedBox(height: 20),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

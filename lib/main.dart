@@ -14,7 +14,7 @@ class QuizApp extends StatelessWidget {
       title: "Quiz app",
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       debugShowCheckedModeBanner: false,
-      home: const ResultScreen(),
+      home: const QuizScreen(),
     );
   }
 }
