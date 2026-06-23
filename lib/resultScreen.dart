@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question.dart';
 
 class ResultScreen extends StatelessWidget {
+  final List<Question> questions;
+  final List<int> userSelected;
   final int score = 3;
   final int qLength = 5;
 
-  const ResultScreen({super.key});
+  const ResultScreen({
+    super.key,
+    required this.questions,
+    required this.userSelected,
+  });
 
   @override
   Widget build(BuildContext context) {

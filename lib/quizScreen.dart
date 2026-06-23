@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/question.dart';
+import 'package:quiz_app/resultScreen.dart';
 
 class QuizScreen extends StatefulWidget {
   final List<Question> questions;
@@ -31,7 +32,7 @@ class _QuizScreenState extends State<QuizScreen> {
     messenger.hideCurrentSnackBar();
     messenger.showSnackBar(
       SnackBar(
-        backgroundColor: Colors.amber.shade500,
+        backgroundColor: Colors.amber.shade300,
         content: const Text(
           'Warning: You reached Limit',
           style: TextStyle(color: Colors.black),
@@ -47,6 +48,17 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
     );
     return;
+  }
+
+  void checkAnswer() {
+    // if (userSelected[currentIdx] == -1) {
+    // show correct answer explanation regardless of any choice
+    setState(() {
+      checked[currentIdx] = true;
+    });
+
+    return;
+    // }
   }
 
   void next(BuildContext context) {
@@ -76,6 +88,18 @@ class _QuizScreenState extends State<QuizScreen> {
     if (flagNextPrev) {
       showWarning(context);
     }
+  }
+
+  void finishEvent() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ResultScreen(
+          questions: widget.questions,
+          userSelected: userSelected,
+        ),
+      ),
+    );
   }
 
   void selectOption(int idx) {
@@ -146,6 +170,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 }),
 
                 const Spacer(),
+
                 if (isChecked) ...[
                   Container(
                     width: double.infinity,
@@ -170,9 +195,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          "Explanation: Use a for loop to build a list of Card widgets and place them in the Scaffold body (e.g., in a Column or ListView). Example that creates three similar cards with text \"demo option 1\", \"demo option 2\", \"demo option 3\"",
-                        ),
+                        Text("Explanation: ${q.explanation}"),
                       ],
                     ),
                   ),
@@ -193,7 +216,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         SizedBox(width: 10),
                         Expanded(
                           child: ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: checkAnswer,
                             label: Text("Check answer"),
                             icon: Icon(Icons.lightbulb),
                           ),
@@ -214,7 +237,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 SizedBox(height: 10),
                 Center(
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: finishEvent,
                     style: ButtonStyle(
                       side: WidgetStateProperty.all(
                         BorderSide(color: Colors.red),
